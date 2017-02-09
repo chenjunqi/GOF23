@@ -1,8 +1,7 @@
 package com.bookbuf.gof23.command.debug;
 
 import com.bookbuf.gof23.Machine;
-import com.bookbuf.gof23.MachineCommandReceiver;
-import com.bookbuf.gof23.command.Invoke;
+import com.bookbuf.gof23.command.SamuCommandReceiver;
 
 /**
  * author: robert.
@@ -22,20 +21,5 @@ public class Client {
         receiver.onReceive("跳舞", "肚皮舞");
     }
 
-    public static class SamuCommandReceiver implements MachineCommandReceiver {
 
-        Invoke invoke = new Invoke();
-        Machine machine;
-
-        public SamuCommandReceiver(Machine machine) {
-            this.machine = machine;
-            System.out.printf("机器人%s的接收功能正常开启%n", machine);
-        }
-
-        @Override
-        public void onReceive(String command, String param) {
-            System.out.printf("机器人%s接收到指令：%s，%s%n", machine, command, param);
-            invoke.invoke(machine, command, param);
-        }
-    }
 }
