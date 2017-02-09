@@ -1,4 +1,4 @@
-package com.bookbuf.gof23.decorate.decorateImpls;
+package com.bookbuf.gof23.decorate.impls;
 
 import com.bookbuf.gof23.decorate.IMachineComponent;
 

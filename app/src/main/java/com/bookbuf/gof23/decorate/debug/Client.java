@@ -3,10 +3,10 @@ package com.bookbuf.gof23.decorate.debug;
 import com.bookbuf.gof23.decorate.IMachineComponent;
 import com.bookbuf.gof23.Machine;
 import com.bookbuf.gof23.decorate.MachineComponent;
-import com.bookbuf.gof23.decorate.decorateImpls.BodyMachineDecorateImpl;
-import com.bookbuf.gof23.decorate.decorateImpls.ButtMachineDecorateImpl;
-import com.bookbuf.gof23.decorate.decorateImpls.ChestMachineDecorateImpl;
-import com.bookbuf.gof23.decorate.decorateImpls.FaceMachineDecorateImpl;
+import com.bookbuf.gof23.decorate.impls.BodyMachineDecorateImpl;
+import com.bookbuf.gof23.decorate.impls.ButtMachineDecorateImpl;
+import com.bookbuf.gof23.decorate.impls.ChestMachineDecorateImpl;
+import com.bookbuf.gof23.decorate.impls.FaceMachineDecorateImpl;
 
 /**
  * author: robert.
