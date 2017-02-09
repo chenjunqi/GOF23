@@ -8,12 +8,23 @@ package com.bookbuf.gof23;
 
 public class Machine {
 
-    public Machine() {
-        System.out.printf("创建了%s%n", toString());
+    private String name;
+
+    public Machine(String name) {
+        this.name = name;
+        System.out.println("创建了机器人 " + name);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
-        return "福尔马林牌女友机器人";
+        return name;
     }
 }

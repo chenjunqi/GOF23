@@ -1,7 +1,7 @@
 package com.bookbuf.gof23.decorate.debug;
 
-import com.bookbuf.gof23.decorate.IMachineComponent;
 import com.bookbuf.gof23.Machine;
+import com.bookbuf.gof23.decorate.IMachineComponent;
 import com.bookbuf.gof23.decorate.MachineComponent;
 import com.bookbuf.gof23.decorate.impls.BodyMachineDecorateImpl;
 import com.bookbuf.gof23.decorate.impls.ButtMachineDecorateImpl;
@@ -17,7 +17,7 @@ public class Client {
 
     public static void main(String[] args) {
 
-        Machine machine = new Machine();
+        Machine machine = new Machine("Samu");
 
         IMachineComponent component = new MachineComponent();
 
