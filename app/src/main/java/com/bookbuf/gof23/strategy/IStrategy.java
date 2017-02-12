@@ -5,7 +5,7 @@ package com.bookbuf.gof23.strategy;
  * date :  2017/2/10.
  */
 
-public interface IOpenDoorStrategy {
+public interface IStrategy {
 
     void operation();
 }

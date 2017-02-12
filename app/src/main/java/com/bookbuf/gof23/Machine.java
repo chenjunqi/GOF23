@@ -1,6 +1,6 @@
 package com.bookbuf.gof23;
 
-import com.bookbuf.gof23.strategy.IOpenDoorStrategy;
+import com.bookbuf.gof23.strategy.IStrategy;
 
 import java.util.HashMap;
 
@@ -27,13 +27,13 @@ public class Machine {
         return name;
     }
 
-    private HashMap<User, IOpenDoorStrategy> map = new HashMap<>();
+    private HashMap<User, IStrategy> map = new HashMap<>();
 
-    public void configure(User user, IOpenDoorStrategy strategy) {
+    public void configure(User user, IStrategy strategy) {
         map.put(user, strategy);
     }
 
-    public IOpenDoorStrategy getStrategy(User user) {
+    public IStrategy getStrategy(User user) {
         return map.get(user);
     }
 
