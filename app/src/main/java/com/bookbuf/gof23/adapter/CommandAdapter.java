@@ -1,5 +1,6 @@
 package com.bookbuf.gof23.adapter;
 
+import com.bookbuf.gof23.Machine;
 import com.bookbuf.gof23.User;
 import com.bookbuf.gof23.command.ICommand;
 import com.bookbuf.gof23.command.impls.BoilWaterCommandImpl;
@@ -18,16 +19,25 @@ public class CommandAdapter implements ICommand {
 
     private String method;
     private String param;
-    private HashMap<String, Command> map = new HashMap<>();
     private User user;
+    private Machine machine;
 
-    public void setUser(User user) {
+    public CommandAdapter(String method, String param, User user, Machine machine) {
+        this.method = method;
+        this.param = param;
         this.user = user;
+        this.machine = machine;
     }
 
     public User getUser() {
         return user;
     }
+
+    public Machine getMachine() {
+        return machine;
+    }
+
+    private HashMap<String, Command> map = new HashMap<>();
 
     // 不同method适配为对应的操作指令
     private Command pickCommand(String method, String param) {
@@ -42,6 +52,9 @@ public class CommandAdapter implements ICommand {
             command = createCommand(CookCommandImpl.KEY_COOK, param, CookCommandImpl.class);
         } else if (method.startsWith(OpenDoorCommandImpl.KEY_OPEN_DOOR)) {
             command = createCommand(OpenDoorCommandImpl.KEY_OPEN_DOOR, param, OpenDoorCommandImpl.class);
+            OpenDoorCommandImpl openDoorCommand = (OpenDoorCommandImpl) command;
+            openDoorCommand.setUser(user);
+            openDoorCommand.setMachine(machine);
         }
         return command;
     }
@@ -72,10 +85,6 @@ public class CommandAdapter implements ICommand {
         }
     }
 
-    public CommandAdapter(String method, String param) {
-        this.method = method;
-        this.param = param;
-    }
 
     @Override
     public void excute() {

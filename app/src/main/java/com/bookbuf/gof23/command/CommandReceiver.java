@@ -21,6 +21,6 @@ public class CommandReceiver {
 
     public void onReceive(User user, String command, String param) {
         System.out.printf("机器人%s接收到指令：%s，%s%n", machine, command, param);
-        invoke.invoke(user, new CommandAdapter(command, param));
+        invoke.invoke(new CommandAdapter(command, param, user, machine));
     }
 }
