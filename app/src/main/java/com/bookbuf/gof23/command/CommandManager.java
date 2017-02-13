@@ -1,7 +1,7 @@
 package com.bookbuf.gof23.command;
 
+import com.bookbuf.gof23.User;
 import com.bookbuf.gof23.adapter.CommandAdapter;
-import com.bookbuf.gof23.command.impls.OpenDoorCommandImpl;
 
 /**
  * author: robert.
@@ -10,11 +10,9 @@ import com.bookbuf.gof23.command.impls.OpenDoorCommandImpl;
 
 public class CommandManager {
 
-    public void invoke(CommandAdapter adapter) {
+    public void invoke(User user, CommandAdapter adapter) {
+        adapter.setUser(user);
         adapter.excute();
     }
 
-    public void invoke(OpenDoorCommandImpl command) {
-        command.excute();
-    }
 }

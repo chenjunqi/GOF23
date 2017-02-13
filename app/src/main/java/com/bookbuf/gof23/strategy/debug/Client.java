@@ -2,7 +2,7 @@ package com.bookbuf.gof23.strategy.debug;
 
 import com.bookbuf.gof23.Machine;
 import com.bookbuf.gof23.User;
-import com.bookbuf.gof23.command.OpenDoorCommandReceiver;
+import com.bookbuf.gof23.command.CommandReceiver;
 import com.bookbuf.gof23.strategy.impls.VerifyFailStrategy;
 import com.bookbuf.gof23.strategy.impls.VerifySuccessStrategy;
 
@@ -23,13 +23,9 @@ public class Client {
         machine.configure(aliceParent, new VerifyFailStrategy());
 
 
-        OpenDoorCommandReceiver receiver = new OpenDoorCommandReceiver(machine);
-        System.out.println("++aliceParent++");
-        receiver.onReceive("开门", aliceParent);
-        System.out.println("--aliceParent--");
-        System.out.println("++alice++");
-        receiver.onReceive("开门", alice);
-        System.out.println("--alice--");
+        CommandReceiver receiver = new CommandReceiver(machine);
+        receiver.onReceive(alice, "开门", null);
+        receiver.onReceive(aliceParent, "开门", null);
 
     }
 }

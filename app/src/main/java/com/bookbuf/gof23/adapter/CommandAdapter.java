@@ -1,5 +1,6 @@
 package com.bookbuf.gof23.adapter;
 
+import com.bookbuf.gof23.User;
 import com.bookbuf.gof23.command.ICommand;
 import com.bookbuf.gof23.command.impls.BoilWaterCommandImpl;
 import com.bookbuf.gof23.command.impls.Command;
@@ -12,17 +13,23 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
-/**
- * author: robert.
- * date :  2017/2/9.
- */
-
+// 适配类：用于适配ICommand接口
 public class CommandAdapter implements ICommand {
 
     private String method;
     private String param;
     private HashMap<String, Command> map = new HashMap<>();
+    private User user;
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    // 不同method适配为对应的操作指令
     private Command pickCommand(String method, String param) {
         Command command = null;
         if (method.startsWith(DanceCommandImpl.KEY_DANCE)) {
@@ -39,6 +46,7 @@ public class CommandAdapter implements ICommand {
         return command;
     }
 
+    // 创建过程由内部控制
     private Command createCommand(String key, String param, Class<?> clazz) {
         if (map.containsKey(key)) {
             return map.get(key);

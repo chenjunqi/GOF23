@@ -1,7 +1,8 @@
 package com.bookbuf.gof23.command.debug;
 
 import com.bookbuf.gof23.Machine;
-import com.bookbuf.gof23.command.SamuCommandReceiver;
+import com.bookbuf.gof23.User;
+import com.bookbuf.gof23.command.CommandReceiver;
 
 /**
  * author: robert.
@@ -14,11 +15,12 @@ public class Client {
 
 
         Machine machine = new Machine("Samu");
+        User user = new User("Alice");
 
-        SamuCommandReceiver receiver = new SamuCommandReceiver(machine);
+        CommandReceiver receiver = new CommandReceiver(machine);
 
-        receiver.onReceive("唱歌", "稻香");
-        receiver.onReceive("跳舞", "肚皮舞");
+        receiver.onReceive(user, "唱歌", "稻香");
+        receiver.onReceive(user, "跳舞", "肚皮舞");
     }
 
 
