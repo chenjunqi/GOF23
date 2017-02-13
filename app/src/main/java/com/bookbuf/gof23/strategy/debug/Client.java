@@ -3,8 +3,8 @@ package com.bookbuf.gof23.strategy.debug;
 import com.bookbuf.gof23.Machine;
 import com.bookbuf.gof23.User;
 import com.bookbuf.gof23.command.CommandReceiver;
-import com.bookbuf.gof23.strategy.impls.VerifyFailStrategy;
-import com.bookbuf.gof23.strategy.impls.VerifySuccessStrategy;
+import com.bookbuf.gof23.strategy.impls.OpenDoorFailStrategy;
+import com.bookbuf.gof23.strategy.impls.OpenDoorSuccessStrategy;
 
 /**
  * author: robert.
@@ -19,8 +19,8 @@ public class Client {
 
 
         Machine machine = new Machine("Samu");
-        machine.configure(alice, new VerifySuccessStrategy());
-        machine.configure(aliceParent, new VerifyFailStrategy());
+        machine.configure(alice, new OpenDoorSuccessStrategy());
+        machine.configure(aliceParent, new OpenDoorFailStrategy());
 
 
         CommandReceiver receiver = new CommandReceiver(machine);

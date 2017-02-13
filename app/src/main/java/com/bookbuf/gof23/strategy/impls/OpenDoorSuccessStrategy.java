@@ -7,7 +7,7 @@ import com.bookbuf.gof23.strategy.IStrategy;
  * date :  2017/2/10.
  */
 
-public class VerifySuccessStrategy implements IStrategy {
+public class OpenDoorSuccessStrategy implements IStrategy {
     @Override
     public void operation() {
         System.out.println("验证通过，已将门打开");
