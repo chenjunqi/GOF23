@@ -1,6 +1,6 @@
 package com.bookbuf.gof23.command;
 
-import com.bookbuf.gof23.command.adapter.StringCommandAdapter;
+import com.bookbuf.gof23.adapter.CommandAdapter;
 import com.bookbuf.gof23.command.impls.OpenDoorCommandImpl;
 
 /**
@@ -10,7 +10,7 @@ import com.bookbuf.gof23.command.impls.OpenDoorCommandImpl;
 
 public class CommandManager {
 
-    public void invoke(StringCommandAdapter adapter) {
+    public void invoke(CommandAdapter adapter) {
         adapter.excute();
     }
 

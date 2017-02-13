@@ -1,7 +1,7 @@
 package com.bookbuf.gof23.command;
 
 import com.bookbuf.gof23.Machine;
-import com.bookbuf.gof23.command.adapter.StringCommandAdapter;
+import com.bookbuf.gof23.adapter.CommandAdapter;
 
 /**
  * author: robert.
@@ -20,6 +20,6 @@ public class SamuCommandReceiver {
 
     public void onReceive(String command, String param) {
         System.out.printf("机器人%s接收到指令：%s，%s%n", machine, command, param);
-        invoke.invoke(new StringCommandAdapter(command, param));
+        invoke.invoke(new CommandAdapter(command, param));
     }
 }

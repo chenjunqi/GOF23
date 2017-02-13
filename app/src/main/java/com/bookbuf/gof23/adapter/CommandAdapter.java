@@ -1,4 +1,4 @@
-package com.bookbuf.gof23.command.adapter;
+package com.bookbuf.gof23.adapter;
 
 import com.bookbuf.gof23.command.ICommand;
 import com.bookbuf.gof23.command.impls.Command;
@@ -14,7 +14,7 @@ import java.util.HashMap;
  * date :  2017/2/9.
  */
 
-public class StringCommandAdapter implements ICommand {
+public class CommandAdapter implements ICommand {
 
     private String method;
     private String param;
@@ -55,7 +55,7 @@ public class StringCommandAdapter implements ICommand {
         }
     }
 
-    public StringCommandAdapter(String method, String param) {
+    public CommandAdapter(String method, String param) {
         this.method = method;
         this.param = param;
     }
@@ -69,7 +69,7 @@ public class StringCommandAdapter implements ICommand {
 
     @Override
     public String toString() {
-        return "StringCommandAdapter{" +
+        return "CommandAdapter{" +
                 "method='" + method + '\'' +
                 ", param='" + param + '\'' +
                 ", map=" + map +
