@@ -11,6 +11,8 @@ import com.bookbuf.gof23.command.ICommand;
 
 public class OpenDoorCommandImpl implements ICommand {
 
+    public static final String KEY_OPEN_DOOR = "开门";
+
     private User user;
     private Machine machine;
 
@@ -21,6 +23,7 @@ public class OpenDoorCommandImpl implements ICommand {
 
     @Override
     public void excute() {
+        System.out.println("调用指令 " + KEY_OPEN_DOOR);
         machine.getStrategy(user).operation();
     }
 }

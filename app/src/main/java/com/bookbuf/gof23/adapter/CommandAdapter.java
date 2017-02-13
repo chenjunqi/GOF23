@@ -1,8 +1,11 @@
 package com.bookbuf.gof23.adapter;
 
 import com.bookbuf.gof23.command.ICommand;
+import com.bookbuf.gof23.command.impls.BoilWaterCommandImpl;
 import com.bookbuf.gof23.command.impls.Command;
+import com.bookbuf.gof23.command.impls.CookCommandImpl;
 import com.bookbuf.gof23.command.impls.DanceCommandImpl;
+import com.bookbuf.gof23.command.impls.OpenDoorCommandImpl;
 import com.bookbuf.gof23.command.impls.SongCommandImpl;
 
 import java.lang.reflect.Constructor;
@@ -26,6 +29,12 @@ public class CommandAdapter implements ICommand {
             command = createCommand(DanceCommandImpl.KEY_DANCE, param, DanceCommandImpl.class);
         } else if (method.startsWith(SongCommandImpl.KEY_SONG)) {
             command = createCommand(SongCommandImpl.KEY_SONG, param, SongCommandImpl.class);
+        } else if (method.startsWith(BoilWaterCommandImpl.KEY_BOIL_WATER)) {
+            command = createCommand(BoilWaterCommandImpl.KEY_BOIL_WATER, param, BoilWaterCommandImpl.class);
+        } else if (method.startsWith(CookCommandImpl.KEY_COOK)) {
+            command = createCommand(CookCommandImpl.KEY_COOK, param, CookCommandImpl.class);
+        } else if (method.startsWith(OpenDoorCommandImpl.KEY_OPEN_DOOR)) {
+            command = createCommand(OpenDoorCommandImpl.KEY_OPEN_DOOR, param, OpenDoorCommandImpl.class);
         }
         return command;
     }
