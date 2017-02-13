@@ -29,14 +29,6 @@ public class CommandAdapter implements ICommand {
         this.machine = machine;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public Machine getMachine() {
-        return machine;
-    }
-
     private HashMap<String, Command> map = new HashMap<>();
 
     // 不同method适配为对应的操作指令
