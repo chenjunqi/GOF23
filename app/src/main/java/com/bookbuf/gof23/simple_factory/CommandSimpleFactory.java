@@ -23,15 +23,15 @@ public class CommandSimpleFactory {
     public static ICommand createCommand(User user, Machine machine, String method, String param) {
         Command command = null;
         if (method.startsWith(DanceCommandImpl.KEY_DANCE)) {
-            command = createCommand(DanceCommandImpl.KEY_DANCE, param, DanceCommandImpl.class);
+            command = createCommand(param, DanceCommandImpl.class);
         } else if (method.startsWith(SongCommandImpl.KEY_SONG)) {
-            command = createCommand(SongCommandImpl.KEY_SONG, param, SongCommandImpl.class);
+            command = createCommand(param, SongCommandImpl.class);
         } else if (method.startsWith(BoilWaterCommandImpl.KEY_BOIL_WATER)) {
-            command = createCommand(BoilWaterCommandImpl.KEY_BOIL_WATER, param, BoilWaterCommandImpl.class);
+            command = createCommand(param, BoilWaterCommandImpl.class);
         } else if (method.startsWith(CookCommandImpl.KEY_COOK)) {
-            command = createCommand(CookCommandImpl.KEY_COOK, param, CookCommandImpl.class);
+            command = createCommand(param, CookCommandImpl.class);
         } else if (method.startsWith(OpenDoorCommandImpl.KEY_OPEN_DOOR)) {
-            command = createCommand(OpenDoorCommandImpl.KEY_OPEN_DOOR, param, OpenDoorCommandImpl.class);
+            command = createCommand(param, OpenDoorCommandImpl.class);
             OpenDoorCommandImpl openDoorCommand = (OpenDoorCommandImpl) command;
             openDoorCommand.setUser(user);
             openDoorCommand.setMachine(machine);
@@ -40,7 +40,7 @@ public class CommandSimpleFactory {
     }
 
     // 创建过程由内部控制
-    private static Command createCommand(String key, String param, Class<?> clazz) {
+    private static Command createCommand(String param, Class<?> clazz) {
         Command command = null;
         try {
             Constructor<?> constructor = clazz.getConstructor(String.class);
