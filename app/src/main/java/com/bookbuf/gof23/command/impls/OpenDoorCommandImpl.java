@@ -15,15 +15,9 @@ public class OpenDoorCommandImpl extends Command {
     private User user;
     private Machine machine;
 
-    public OpenDoorCommandImpl(String param) {
+    public OpenDoorCommandImpl(String param, User user, Machine machine) {
         super(param);
-    }
-
-    public void setUser(User user) {
         this.user = user;
-    }
-
-    public void setMachine(Machine machine) {
         this.machine = machine;
     }
 
