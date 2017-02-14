@@ -18,7 +18,7 @@ import com.bookbuf.gof23.command.impls.SongCommandImpl;
 public class CommandSimpleFactory {
 
     public static ICommand createCommand(User user, Machine machine, String method, String param) {
-        Command command = null;
+        Command command;
         if (method.startsWith(DanceCommandImpl.KEY_DANCE)) {
             command = new DanceCommandImpl(param);
         } else if (method.startsWith(SongCommandImpl.KEY_SONG)) {
