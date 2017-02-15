@@ -9,8 +9,8 @@ import java.util.List;
  * date :  2017/2/15.
  */
 
-public abstract class AbsMethodFactory implements IMusicFactory {
-    @Override
+public abstract class AbsMethodFactory {
+
     public final List<Music> createDefaultMusicDatabase() {
         List<Music> musics = createDatabase();
         print(musics);

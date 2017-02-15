@@ -1,6 +1,6 @@
 package com.bookbuf.gof23;
 
-import com.bookbuf.gof23.factory_method.IMusicFactory;
+import com.bookbuf.gof23.factory_method.AbsMethodFactory;
 import com.bookbuf.gof23.factory_method.impls.BluesMusicFactory;
 import com.bookbuf.gof23.factory_method.impls.JazzMusicFactory;
 import com.bookbuf.gof23.factory_method.impls.PopularMusicFactory;
@@ -25,8 +25,8 @@ public class MusicDatabase {
         return database;
     }
 
-    private List<IMusicFactory> initFactory() {
-        List<IMusicFactory> list = new ArrayList<>();
+    private List<AbsMethodFactory> initFactory() {
+        List<AbsMethodFactory> list = new ArrayList<>();
         list.add(new JazzMusicFactory());
         list.add(new BluesMusicFactory());
         list.add(new PopularMusicFactory());
@@ -35,8 +35,8 @@ public class MusicDatabase {
 
     public void initDatabase() {
 
-        List<IMusicFactory> factories = initFactory();
-        for (IMusicFactory factory : factories) {
+        List<AbsMethodFactory> factories = initFactory();
+        for (AbsMethodFactory factory : factories) {
             List<Music> musics = factory.createDefaultMusicDatabase();
             System.out.printf("添加歌曲库:%s:%d首%n", factory.getClass().getSimpleName(), musics.size());
             this.musics.addAll(musics);
