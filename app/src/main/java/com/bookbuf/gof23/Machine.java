@@ -19,6 +19,10 @@ public class Machine {
         System.out.println("创建了机器人 " + name);
     }
 
+    public void initMusicDatabase() {
+        MusicDatabase.getDatabase().initDatabase();
+    }
+
     public void setName(String name) {
         this.name = name;
     }

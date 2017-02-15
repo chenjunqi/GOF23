@@ -14,4 +14,10 @@ public class Music {
     public boolean isDownload;
     public boolean isError;
 
+    public Music() {
+    }
+
+    public Music(String name) {
+        this.name = name;
+    }
 }
