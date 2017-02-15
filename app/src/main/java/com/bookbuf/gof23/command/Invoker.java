@@ -12,5 +12,4 @@ public class Invoker {
     public void invoke(CommandAdapter adapter) {
         adapter.excute();
     }
-
 }
