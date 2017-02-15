@@ -11,7 +11,7 @@ import com.bookbuf.gof23.adapter.CommandAdapter;
 
 public class CommandReceiver {
 
-    private CommandManager invoke = new CommandManager();
+    private Invoker invoke = new Invoker();
     private Machine machine;
 
     public CommandReceiver(Machine machine) {

@@ -7,7 +7,7 @@ import com.bookbuf.gof23.adapter.CommandAdapter;
  * date :  2017/2/9.
  */
 
-public class CommandManager {
+public class Invoker {
 
     public void invoke(CommandAdapter adapter) {
         adapter.excute();
