@@ -12,8 +12,9 @@ public class Root extends ProtoObject {
         super(cloneProto);
     }
 
+    @ProtoTypeInherits
     public void root() {
-        System.err.println("*** Root");
+
     }
 
 }

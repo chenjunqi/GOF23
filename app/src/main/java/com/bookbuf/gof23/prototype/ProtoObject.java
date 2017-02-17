@@ -61,7 +61,7 @@ public class ProtoObject implements IPrototype, Cloneable {
 
         Method method = pickMethod(cls, methodString::equalsIgnoreCase);
         if (predicate.test(method)) {
-            System.out.println("匹配成功 " + cls.getSimpleName());
+            System.out.println("当前输入类型" + cls.getSimpleName() + "，结果匹配成功 ");
             try {
                 method.invoke(proto);
             } catch (IllegalAccessException e) {
@@ -71,7 +71,7 @@ public class ProtoObject implements IPrototype, Cloneable {
             }
             return true;
         } else {
-            System.out.println("匹配失败 " + cls.getSimpleName());
+            System.out.println("当前输入类型" + cls.getSimpleName() + "，结果匹配失败 ");
             return false;
         }
     }

@@ -12,8 +12,9 @@ public class Combination extends ProtoObject {
         super(cloneProto);
     }
 
+    @ProtoTypeInherits
     public void combination() {
-        System.err.println("*** Combination");
+
     }
 
 }

@@ -12,8 +12,9 @@ public class Leaf extends ProtoObject {
         super(cloneProto);
     }
 
+    @ProtoTypeInherits
     public void leaf() {
-        System.err.println("*** Leaf");
+
     }
 
 }
