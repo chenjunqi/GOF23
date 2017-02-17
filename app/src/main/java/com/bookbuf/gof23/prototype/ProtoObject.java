@@ -56,6 +56,16 @@ public class ProtoObject implements IPrototype, Cloneable {
         return (ProtoObject) super.clone();
     }
 
+    public void printChain() {
+        System.out.println("打印原型链 +");
+        IPrototype proto = __constructor__();
+        while (proto != null) {
+            System.out.println(proto.__constructor__().getClass());
+            proto = proto.__proto__();
+        }
+        System.out.println("打印原型链 -");
+    }
+
     private boolean pickInvoke(Class<?> cls, IPrototype proto, String methodString, Predicate<Method> predicate) {
 
 
