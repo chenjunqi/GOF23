@@ -13,7 +13,7 @@ public class Leaf extends ProtoObject {
     }
 
     public void leaf() {
-        System.out.println("Leaf");
+        System.err.println("*** Leaf");
     }
 
 }

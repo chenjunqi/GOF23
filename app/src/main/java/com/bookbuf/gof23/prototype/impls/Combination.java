@@ -13,7 +13,7 @@ public class Combination extends ProtoObject {
     }
 
     public void combination() {
-        System.out.println("Combination");
+        System.err.println("*** Combination");
     }
 
 }

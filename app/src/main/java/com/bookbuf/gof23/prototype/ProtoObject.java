@@ -1,5 +1,9 @@
 package com.bookbuf.gof23.prototype;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.function.Predicate;
+
 /**
  * author: robert.
  * date :  2017/2/17.
@@ -10,7 +14,7 @@ public class ProtoObject implements IPrototype, Cloneable {
     // 克隆的原型对象
     private ProtoObject cloneProto;
 
-    public ProtoObject(ProtoObject cloneProto) {
+    public ProtoObject(/* 继承的对象 */ProtoObject cloneProto) {
         if (cloneProto == null) {
             this.cloneProto = null;
         } else {
@@ -32,16 +36,56 @@ public class ProtoObject implements IPrototype, Cloneable {
         return this;
     }
 
-    public void invoke(String method) {
-        IPrototype proto = cloneProto;
+    public void invoke(String methodString) {
+        IPrototype proto = __constructor__();
+        Class<?> cls;
+        System.out.printf(" 查找 原型链 + (%s)%n", methodString);
         while (proto != null) {
-            System.out.println(proto.getClass().getSimpleName());
+            cls = proto.getClass();
+            if (pickInvoke(cls, proto, methodString, (Method method) -> (method != null))) {
+                break;
+            }
             proto = proto.__proto__();
+
         }
+        System.out.printf(" 查找 原型链 - (%s)%n", methodString);
     }
 
     @Override
     protected ProtoObject clone() throws CloneNotSupportedException {
         return (ProtoObject) super.clone();
     }
+
+    private boolean pickInvoke(Class<?> cls, IPrototype proto, String methodString, Predicate<Method> predicate) {
+
+
+        Method method = pickMethod(cls, methodString::equalsIgnoreCase);
+        if (predicate.test(method)) {
+            System.out.println("匹配成功 " + cls.getSimpleName());
+            try {
+                method.invoke(proto);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            return true;
+        } else {
+            System.out.println("匹配失败 " + cls.getSimpleName());
+            return false;
+        }
+    }
+
+    public Method pickMethod(Class<?> cls, Predicate<String> predicate) {
+        Method[] methods = cls.getMethods();
+        if (methods == null) return null;
+        if (methods.length == 0) return null;
+        for (Method m : methods) {
+            if (predicate.test(m.getName())) {
+                return m;
+            }
+        }
+        return null;
+    }
+
 }

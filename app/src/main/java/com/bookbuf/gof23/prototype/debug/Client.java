@@ -18,7 +18,9 @@ public class Client {
         Combination combination = new Combination(root);
         Leaf leaf = new Leaf(combination);
 
-        leaf.invoke("");
+        leaf.invoke("leaf");
+        leaf.invoke("combination");
+        leaf.invoke("root");
 
     }
 

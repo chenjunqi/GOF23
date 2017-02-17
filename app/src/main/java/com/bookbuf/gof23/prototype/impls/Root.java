@@ -13,7 +13,7 @@ public class Root extends ProtoObject {
     }
 
     public void root() {
-        System.out.println("Root");
+        System.err.println("*** Root");
     }
 
 }
