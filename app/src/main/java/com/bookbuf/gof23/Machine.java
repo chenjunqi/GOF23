@@ -13,14 +13,15 @@ import java.util.HashMap;
 public class Machine {
 
     private String name;
+    private MusicDatabase database = MusicDatabase.getDatabase();
 
     public Machine(String name) {
         this.name = name;
         System.out.println("创建了机器人 " + name);
     }
 
-    public void initMusicDatabase() {
-        MusicDatabase.getDatabase().initDatabase();
+    public MusicDatabase getDatabase() {
+        return database;
     }
 
     public void setName(String name) {

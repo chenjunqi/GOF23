@@ -1,7 +1,5 @@
 package com.bookbuf.gof23.simple_factory;
 
-import com.bookbuf.gof23.Machine;
-import com.bookbuf.gof23.User;
 import com.bookbuf.gof23.command.ICommand;
 import com.bookbuf.gof23.command.impls.BoilWaterCommandImpl;
 import com.bookbuf.gof23.command.impls.Command;
@@ -9,6 +7,7 @@ import com.bookbuf.gof23.command.impls.CookCommandImpl;
 import com.bookbuf.gof23.command.impls.DanceCommandImpl;
 import com.bookbuf.gof23.command.impls.OpenDoorCommandImpl;
 import com.bookbuf.gof23.command.impls.SongCommandImpl;
+import com.bookbuf.gof23.facade.HumanComputerInteraction;
 
 /**
  * author: robert.
@@ -21,7 +20,7 @@ public class CommandSimpleFactory {
         return method.startsWith(key);
     }
 
-    public static ICommand createCommand(User user, Machine machine, String method, String param) {
+    public static ICommand createCommand(HumanComputerInteraction.Context context, String method, String param) {
         Command command;
         if (equals(method, DanceCommandImpl.KEY_DANCE)) {
             command = new DanceCommandImpl(param);
@@ -32,7 +31,7 @@ public class CommandSimpleFactory {
         } else if (equals(method, CookCommandImpl.KEY_COOK)) {
             command = new CookCommandImpl(param);
         } else if (equals(method, OpenDoorCommandImpl.KEY_OPEN_DOOR)) {
-            command = new OpenDoorCommandImpl(param, user, machine);
+            command = new OpenDoorCommandImpl(param, context);
         } else {
             throw new IllegalArgumentException("NO COMMAND CREATED!!!");
         }

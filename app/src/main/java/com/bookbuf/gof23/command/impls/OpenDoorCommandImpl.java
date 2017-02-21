@@ -2,6 +2,7 @@ package com.bookbuf.gof23.command.impls;
 
 import com.bookbuf.gof23.Machine;
 import com.bookbuf.gof23.User;
+import com.bookbuf.gof23.facade.HumanComputerInteraction;
 
 /**
  * author: robert.
@@ -12,24 +13,21 @@ public class OpenDoorCommandImpl extends Command {
 
     public static final String KEY_OPEN_DOOR = "开门";
 
-    private User user;
-    private Machine machine;
+    private HumanComputerInteraction.Context context;
 
-    public OpenDoorCommandImpl(String param, User user, Machine machine) {
+    public OpenDoorCommandImpl(String param, HumanComputerInteraction.Context context) {
         super(param);
-        this.user = user;
-        this.machine = machine;
+        this.context = context;
     }
 
     @Override
     public void excute() {
         System.out.println("调用指令 " + KEY_OPEN_DOOR);
-        if (this.user == null) {
+        if (this.context == null) {
             System.err.println("user is null.");
         }
-        if (this.machine == null) {
-            System.err.println("machine is null.");
-        }
+        final Machine machine = context.getMachine();
+        final User user = context.getUser();
         machine.getStrategy(user).operation();
     }
 }
