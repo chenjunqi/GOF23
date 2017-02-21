@@ -4,6 +4,7 @@ import com.bookbuf.gof23.Machine;
 import com.bookbuf.gof23.MusicDatabase;
 import com.bookbuf.gof23.User;
 import com.bookbuf.gof23.adapter.CommandAdapter;
+import com.bookbuf.gof23.command.CommandReceiver;
 import com.bookbuf.gof23.command.Invoker;
 import com.bookbuf.gof23.command.impls.CookCommandImpl;
 import com.bookbuf.gof23.command.impls.DanceCommandImpl;
@@ -32,6 +33,12 @@ public class HumanComputerInteraction {
         invoker.invoke(new CommandAdapter(CookCommandImpl.KEY_COOK, "红烧肉", context));
         invoker.invoke(new CommandAdapter(DanceCommandImpl.KEY_DANCE, "肚皮舞", context));
         invoker.invoke(new CommandAdapter(SongCommandImpl.KEY_SONG, "千里之外", context));
+    }
+
+    public void setCommand(String command, String param) {
+
+        CommandReceiver receiver = context.getMachine().getReceiver();
+        receiver.onReceive(context, command, param);
     }
 
     public static class Context {

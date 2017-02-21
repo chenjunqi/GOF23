@@ -1,5 +1,6 @@
 package com.bookbuf.gof23;
 
+import com.bookbuf.gof23.command.CommandReceiver;
 import com.bookbuf.gof23.strategy.IStrategy;
 
 import java.util.HashMap;
@@ -14,10 +15,15 @@ public class Machine {
 
     private String name;
     private MusicDatabase database = MusicDatabase.getDatabase();
+    private CommandReceiver receiver = new CommandReceiver();
 
     public Machine(String name) {
         this.name = name;
         System.out.println("创建了机器人 " + name);
+    }
+
+    public CommandReceiver getReceiver() {
+        return receiver;
     }
 
     public MusicDatabase getDatabase() {
