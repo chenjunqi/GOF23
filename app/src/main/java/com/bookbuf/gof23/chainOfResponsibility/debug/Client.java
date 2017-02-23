@@ -24,10 +24,7 @@ public class Client {
         Duty loginStateDuty = new VerifyLoginStateDutyImpl();
 
 
-        emptyDuty.setNext(genderDuty);
-        genderDuty.setNext(loginStateDuty);
-
-        emptyDuty.verify(user);
+        emptyDuty.setNext(genderDuty).setNext(loginStateDuty).moveToFirst().verify(user);
 
     }
 }

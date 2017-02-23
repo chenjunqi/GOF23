@@ -10,11 +10,17 @@ import com.bookbuf.gof23.User;
 public abstract class Duty implements IDuty<User> {
 
     private Duty nextDuty;
+    private Duty prevDuty;
 
-    public void setNext(Duty next) {
+    public Duty setNext(Duty next) {
         this.nextDuty = next;
+        this.nextDuty.setPrev(this);
+        return this;
     }
 
+    protected void setPrev(Duty prev) {
+        this.prevDuty = prev;
+    }
 
     @Override
     public final boolean verify(User user) {
@@ -26,6 +32,14 @@ public abstract class Duty implements IDuty<User> {
                 return nextDuty.verify(user);
             return bool;
         }
+    }
+
+    public Duty moveToFirst() {
+        Duty firstDuty = this;
+        while (firstDuty.prevDuty != null) {
+            firstDuty = firstDuty.prevDuty;
+        }
+        return firstDuty;
     }
 
     protected abstract boolean verifyImpl(User user);
