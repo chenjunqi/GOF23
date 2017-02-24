@@ -8,12 +8,15 @@ import com.bookbuf.gof23.chainOfResponsibility.Duty;
  * date :  2017/2/23.
  */
 
-public class VerifyEmptyDutyImpl extends Duty {
+public class VerifyPasswordDutyImpl extends Duty {
 
     @Override
     protected boolean verifyImpl(User user) {
-        boolean bool = user != null || user.name == null;
-        System.out.println("[VerifyEmptyDutyImpl] 验证结果：" + bool);
-        return bool;
+        String string = user.password;
+        if (string == null)
+            return false;
+        else if (string.length() > 6)
+            return true;
+        return false;
     }
 }

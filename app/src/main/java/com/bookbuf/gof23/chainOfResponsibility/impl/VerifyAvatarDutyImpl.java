@@ -8,11 +8,13 @@ import com.bookbuf.gof23.chainOfResponsibility.Duty;
  * date :  2017/2/23.
  */
 
-public class VerifyLoginStateDutyImpl extends Duty {
+public class VerifyAvatarDutyImpl extends Duty {
     @Override
     public boolean verifyImpl(User user) {
-        boolean bool = user.isLogin;
-        System.out.println("[VerifyLoginStateDutyImpl] 验证结果：" + bool);
-        return bool;
+        String avatar = user.avatar;
+        if (avatar == null) return false;
+        else if (avatar.contains("http://"))
+            return true;
+        return false;
     }
 }

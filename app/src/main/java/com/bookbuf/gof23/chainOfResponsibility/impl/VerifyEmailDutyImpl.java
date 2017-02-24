@@ -8,11 +8,13 @@ import com.bookbuf.gof23.chainOfResponsibility.Duty;
  * date :  2017/2/23.
  */
 
-public class VerifyGenderDutyImpl extends Duty {
+public class VerifyEmailDutyImpl extends Duty {
     @Override
     public boolean verifyImpl(User user) {
-        boolean bool = user.isMale;
-        System.out.println("[VerifyGenderDutyImpl] 验证结果：" + bool);
-        return bool;
+        String email = user.email;
+        if (email == null) return false;
+        else if (email.contains("@"))
+            return true;
+        return false;
     }
 }

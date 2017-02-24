@@ -13,25 +13,39 @@ public abstract class Duty implements IDuty<User> {
     private Duty prevDuty;
 
     public Duty setNext(Duty next) {
-        this.nextDuty = next;
-        this.nextDuty.setPrev(this);
-        return this;
-    }
 
-    protected void setPrev(Duty prev) {
-        this.prevDuty = prev;
+        if (next == null) throw new IllegalArgumentException("duty can not be null.");
+
+        Duty temp = moveToLast();
+
+        temp.nextDuty = next;
+        next.prevDuty = temp;
+
+        return next;
     }
 
     @Override
     public final boolean verify(User user) {
         final boolean bool = verifyImpl(user);
+        System.out.println("[" + getClass().getSimpleName() + "] verify :" + bool);
         if (!bool) {
+            debugPrint(bool);
             return bool;
         } else {
-            if (nextDuty != null)
+            if (nextDuty != null) {
                 return nextDuty.verify(user);
-            return bool;
+            } else {
+                debugPrint(bool);
+                return bool;
+            }
         }
+    }
+
+    private void debugPrint(boolean bool) {
+        if (!bool)
+            System.out.println("[" + getClass().getSimpleName() + "] 被迫终止");
+        else
+            System.out.println("[" + getClass().getSimpleName() + "] 恭喜校验通过");
     }
 
     public Duty moveToFirst() {
@@ -40,6 +54,14 @@ public abstract class Duty implements IDuty<User> {
             firstDuty = firstDuty.prevDuty;
         }
         return firstDuty;
+    }
+
+    public Duty moveToLast() {
+        Duty lastDuty = this;
+        while (lastDuty.nextDuty != null) {
+            lastDuty = nextDuty.prevDuty;
+        }
+        return lastDuty;
     }
 
     protected abstract boolean verifyImpl(User user);
